@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCUM OMNI CREATOR - MERCEDES73</title>
+<meta name="theme-color" content="#00f5ff">
+<link rel="manifest" href="manifest.json">
+<style>
+  body{margin:0;background:#050510;color:#fff;font-family:system-ui;overflow-x:hidden}
+  .omni-header{background:linear-gradient(90deg,#00f5ff,#ff00ff);padding:20px;text-align:center;box-shadow:0 0 30px #00f5ff}
+  .mirror{width:120px;height:120px;border-radius:50%;border:3px solid #00f5ff;margin:10px auto;background:radial-gradient(circle,#fff,#00f5ff,#ff00ff);box-shadow:0 0 20px #00f5ff;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .creator-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;padding:20px}
+  .card{background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border:1px solid #00f5ff;border-radius:20px;padding:15px;text-align:center}
+  .btn{background:linear-gradient(90deg,#00f5ff,#ff00ff);border:none;padding:12px 25px;border-radius:30px;color:#fff;font-weight:bold;cursor:pointer;width:90%;margin:10px}
+  .install-banner{position:fixed;bottom:0;width:100%;background:#000;border-top:2px solid #00f5ff;padding:15px;text-align:center;z-index:999}
+</style>
+</head>
+<body>
+<div class="omni-header">
+  <div class="mirror"></div>
+  <h1>PCUM OMNI CREATOR</h1>
+  <p>ESPEJO HUMANO • DISEÑO PROPIO MERCEDES73</p>
+  <p>Contenedor Universal para Creadores</p>
+</div>
+
+<div class="creator-grid">
+  <div class="card"><h3>📹 Videos</h3><p>Como TikTok / Reels</p><button class="btn">Subir Video</button></div>
+  <div class="card"><h3>🎨 Arte</h3><p>Como Instagram</p><button class="btn">Subir Arte</button></div>
+  <div class="card"><h3>🎵 Música</h3><p>Como Spotify</p><button class="btn">Subir Audio</button></div>
+  <div class="card"><h3>📝 Cursos</h3><p>Como YouTube</p><button class="btn">Crear Curso</button></div>
+  <div class="card"><h3>💎 NFT</h3><p>Tienda Propia</p><button class="btn">Vender</button></div>
+  <div class="card"><h3>🌐 Live</h3><p>Transmisión OMNI</p><button class="btn">En Vivo</button></div>
+</div>
+
+<div style="padding:20px;text-align:center">
+  <h2>👁️ ESPEJO HUMANO ACTIVO</h2>
+  <p>Esta app guarda el contenido de TODAS las demás apps en un solo MINIUNIVERSO</p>
+  <button class="btn" onclick="alert('¡Tu contenido OMNI se guardó en tu universo privado!')">GUARDAR EN MI UNIVERSO</button>
+</div>
+
+<div class="install-banner" id="installBanner">
+  <p>📲 Instala esta App en tu celular</p>
+  <button class="btn" id="btnInstall">INSTALAR AHORA - MERCEDES73</button>
+</div>
+
+<script>
+// PWA Instalable
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBanner').style.display='block';});
+document.getElementById('btnInstall').addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const c=await deferredPrompt.userChoice;deferredPrompt=null;}});
+</script>
+</body>
+</html>
